@@ -9,8 +9,8 @@
 
 public class Item {
 
-    private String name;
-    private double price;
+    final private String name;
+    final private double price;
 
     public Item(String name, double price) {
         this.name = name;
