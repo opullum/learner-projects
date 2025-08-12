@@ -24,4 +24,10 @@ public class Item {
     public double getPrice() {
         return price;
     }
+
+    @Override
+    public String toString() {
+        String ItemString = "%s (%f)";
+        return String.format(ItemString, name, price);
+    }
 }

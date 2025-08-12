@@ -6,7 +6,17 @@
  * @since 1.0
  */
 
-public class Cart {
+import java.util.ArrayList;
 
+public class Cart {
+    ArrayList<Item> items = new ArrayList<>();
+
+    public Item[] returnCart() {
+        return items.toArray(new Item[0]);
+    }
+
+    public void addItem(Item newItem) {
+        items.add(newItem);
+    }
 
 }
