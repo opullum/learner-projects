@@ -7,12 +7,9 @@
  * @since 1.0
  */
 
-import shopping.Cart;
-
 public class Market {
-
-
-
-
-
+    public static void main(String[] args) {
+        Item testingItem = new Item("Testing", 3.17);
+        System.out.println(testingItem.getName());
+    }
 }

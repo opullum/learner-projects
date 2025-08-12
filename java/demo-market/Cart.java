@@ -6,8 +6,6 @@
  * @since 1.0
  */
 
-package shopping;
-
 public class Cart {
 
 
