@@ -33,10 +33,7 @@ print(f"Welcome to the game, {name}")
 
 
 selected_word = random.choice(available_words)
-
-for char in selected_word:
-    if char not in word_list:
-        word_list.append(char)
+word_list = [char for char in selected_word if char not in word_list]
 
 while guesses < GUESS_COUNT and not word_guessed:
     guessed_char = input(f"Enter a character to guess: ")
