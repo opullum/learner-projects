@@ -3,7 +3,7 @@ Public Repository to contain all mini-projects and assignments related to langua
 
 Repository serves as accessible reference to completed projects.
 
-Owned and maintained by @opullum.
+Owned and maintained by [@opullum](https://github.com/opullum).
 ## 📖 Languages
 - Java
 - Python
