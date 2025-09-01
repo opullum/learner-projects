@@ -39,3 +39,26 @@ Else:
             If the computer lands on 20 (last_called), player loss
 """
 
+import sys
+
+called_numbers = []
+recent_number = None
+playing = True
+
+print("ENTER THE NAME YOU WOULD LIKE TO USE")
+player_name = input("> ")
+
+print(f"WELCOME TO BAGRAM, {player_name}. WOULD YOU LIKE TO GO FIRST OR SECOND?")
+print("ENTER 'FIRST' TO GO FIRST AND 'SECOND' TO GO SECOND")
+response = input("> ").lower()
+
+if not (response == "first" or response == "second"):
+    print("I'M AFRAID THAT IS NOT A VALID OPTION. GOODBYE.")
+    playing = False
+
+if (response == "second"):
+    print("THEN YOU WILL GO SECOND. ALLOW US TO BEGIN.")
+
+
+
+
