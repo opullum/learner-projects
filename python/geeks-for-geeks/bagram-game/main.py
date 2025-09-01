@@ -4,3 +4,38 @@
 # to say the number 21. Players may choose to call up to 3 consecutive numbers.
 #
 # Calling non-consecutive numbers is an immediate loss. 
+
+"""
+Planned Algorithm
+
+Ask for player name:
+Ask whether the player wants to go first or second
+If the player goes second:
+    Start computer turn
+Else:
+    While loop for player -> computer turns:
+        Player Turn:
+            Request numbers to be entered
+            Retrieve numbers -- check for consecutive numbers
+                Check to see if numbers are in in order, consecutive, and not 21
+                Order: is called_number - last_number == 1?
+                Consecutive: if a number isnt in order, then it cant be consecutive
+                21: Separate check, likely able to done during computer turn.
+            Append numbers to numbers list as their called with last_called being
+                every new number
+            last_called = numbers_list[-1]
+
+        Computer Turn:
+            if the last_called was 20, computer loss.
+
+            Attempt to call numbers to the nearest multiple of 4
+                Done by checking the previous number in numbers list
+                Calculate the next multiple (target) of 4 by doing:
+                    4 - (previous_number % 4) -- capped at 3, ensure result < 4
+                Call numbers up to the next multiple of 4 (maximum of 3)
+                    While Loop (while called_number < target)
+                    All numbers appended to numbers list, last_called = numbers_list[-1]
+
+            If the computer lands on 20 (last_called), player loss
+"""
+
