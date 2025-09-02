@@ -32,6 +32,8 @@ def computer_turn(called_numbers: list) -> tuple[bool, bool]:
             game_ended = True
 
     if (not game_ended):
+        print("THE COMPUTER WILL NOW PLAY...")
+
         if target_distance > 3: target_distance = 3
 
         added_num = recent_number + 1
@@ -41,9 +43,11 @@ def computer_turn(called_numbers: list) -> tuple[bool, bool]:
             added_num += 1   
 
         recent_number = called_numbers[-1]
+        print("THE COMPUTER TURN IS NOW OVER!")
 
         if recent_number == 20: 
             continue_playing = player_lost()
             game_ended = True
+
 
     return game_ended, continue_playing
