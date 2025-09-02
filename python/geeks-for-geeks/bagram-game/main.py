@@ -67,11 +67,12 @@ def player_lost() -> bool:
 
     return continue_playing
 
-def computer_turn(called_numbers: list) -> bool:
+def computer_turn(called_numbers: list) -> tuple[bool, bool]:
 
     recent_number = 0
     target_distance = 0
     game_ended = False
+    continue_playing = True
 
     # Calculate target value for the computer to attempt to call towards
     if called_numbers:
@@ -79,7 +80,7 @@ def computer_turn(called_numbers: list) -> bool:
         target_distance = 4 - (recent_number % 4) 
 
         if recent_number == 20: 
-            computer_lost()
+            continue_playing = computer_lost()
             game_ended = True
 
     if (not game_ended):
@@ -97,17 +98,15 @@ def computer_turn(called_numbers: list) -> bool:
             continue_playing = player_lost()
             game_ended = True
 
-    return game_ended
+    return game_ended, continue_playing
 
 
 called_numbers = []
 recent_number = None
+game_ended = False
 playing = True
 
-print("ENTER THE NAME YOU WOULD LIKE TO USE")
-player_name = input("> ")
-
-print(f"WELCOME TO BAGRAM, {player_name}. WOULD YOU LIKE TO GO FIRST OR SECOND?")
+print(f"WELCOME TO BAGRAM. WOULD YOU LIKE TO GO FIRST OR SECOND?")
 print("ENTER 'FIRST' TO GO FIRST AND 'SECOND' TO GO SECOND")
 response = input("> ").lower()
 
@@ -117,6 +116,7 @@ if not (response == "first" or response == "second"):
 
 if (response == "second"):
     print("THEN YOU WILL GO SECOND. ALLOW US TO BEGIN.")
+    game_ended, playing = computer_turn(called_numbers)
 
     
 
