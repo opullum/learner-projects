@@ -4,7 +4,7 @@ def verify_input(called_nums: list) -> bool:
 
     latest_num = called_nums[-1]
 
-    if latest_num < 0 or latest_num >= 21: return False
+    if latest_num <= 0 or latest_num >= 21: return False
     if len(called_nums) == 1: return True
 
     previous_num = called_nums[-2]
@@ -36,7 +36,7 @@ def player_turn(called_numbers: list) -> tuple[bool, bool]:
     if called_numbers and not game_ended: 
         print("EXCELLENT. PLEASE ENTER THE NUMBERS YOU WOULD LIKE TO CALL:")
         print(f"CURRENT NUMBERS: {called_numbers}")
-    else:
+    elif (not game_ended):
         print("EXCELLENT. PLEASE ENTER THE NUMBERS YOU WOULD LIKE TO CALL:")
         print("NO NUMBERS HAVE BEEN CALLED. PLEASE CALL CONSECUTIVE NUMBERS STARTING FROM 1!")
 
