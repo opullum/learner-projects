@@ -31,7 +31,6 @@ available_words = ["TESTING", "COMPUTER", "SCIENCE"]
 name = input("Please enter your name for the Guessing Game: ")
 print(f"Welcome to the game, {name}")
 
-
 selected_word = random.choice(available_words)
 word_list = [char for char in selected_word if char not in word_list]
 
