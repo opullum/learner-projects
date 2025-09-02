@@ -41,6 +41,9 @@ Else:
 
 import sys
 
+from computer import computer_turn
+from player import player_lost
+
 def computer_lost() -> bool:
 
     continue_playing = True
@@ -55,17 +58,6 @@ def computer_lost() -> bool:
 
     return continue_playing
 
-def player_lost() -> bool:
-    continue_playing = True
-    
-    print("OH NO! IT APPEARS YOU HAVE LOST!")
-    print("WOULD YOU LIKE TO KEEP PLAYING?")
-    print("ENTER 'YES' OR 'NO' AS AN ANSWER!")
-    response = input("> ").lower()
-
-    if (response == 'no'): continue_playing = False
-
-    return continue_playing
 
 def computer_turn(called_numbers: list) -> tuple[bool, bool]:
 
