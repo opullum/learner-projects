@@ -30,7 +30,7 @@ def player_turn(called_numbers: list) -> tuple[bool, bool]:
     print("YOU MAY CALL UP TO 3 NUMBERS!")
     added_amount = int(input("> "))
 
-    if added_amount > 3 or added_amount < 0: game_ended = True
+    if added_amount > 3 or added_amount <= 0: game_ended = True
 
     print("EXCELLENT. PLEASE ENTER THE NUMBERS YOU WOULD LIKE TO CALL:")
 
