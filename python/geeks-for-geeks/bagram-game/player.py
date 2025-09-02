@@ -32,11 +32,12 @@ def player_turn(called_numbers: list) -> tuple[bool, bool]:
 
     if added_amount > 3 or added_amount <= 0: game_ended = True
 
-    print("EXCELLENT. PLEASE ENTER THE NUMBERS YOU WOULD LIKE TO CALL:")
 
     if called_numbers and not game_ended: 
+        print("EXCELLENT. PLEASE ENTER THE NUMBERS YOU WOULD LIKE TO CALL:")
         print(f"CURRENT NUMBERS: {called_numbers}")
     else:
+        print("EXCELLENT. PLEASE ENTER THE NUMBERS YOU WOULD LIKE TO CALL:")
         print("NO NUMBERS HAVE BEEN CALLED. PLEASE CALL CONSECUTIVE NUMBERS STARTING FROM 1!")
 
     added_count = 0
