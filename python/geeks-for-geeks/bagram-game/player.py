@@ -9,3 +9,6 @@ def player_lost() -> bool:
     if (response == 'no'): continue_playing = False
 
     return continue_playing
+
+def player_turn(called_numbers: list) -> tuple[bool, bool]:
+    return False, True
