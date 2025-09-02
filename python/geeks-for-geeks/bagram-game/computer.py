@@ -18,7 +18,7 @@ def computer_lost() -> bool:
 def computer_turn(called_numbers: list) -> tuple[bool, bool]:
 
     recent_number = 0
-    target_distance = 0
+    target_distance = 3
     game_ended = False
     continue_playing = True
 
@@ -36,7 +36,7 @@ def computer_turn(called_numbers: list) -> tuple[bool, bool]:
 
         added_num = recent_number + 1
 
-        while added_num < recent_number + target_distance:        
+        while added_num <= recent_number + target_distance:        
             called_numbers.append(added_num)
             added_num += 1   
 
