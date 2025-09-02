@@ -10,12 +10,12 @@ import sys
 from computer import computer_turn
 from player import player_turn
 
-called_numbers = []
-recent_number = None
-game_ended = False
 playing = True
 
 while playing:
+    called_numbers = []
+    game_ended = False
+
     print(f"WELCOME TO BAGRAM. WOULD YOU LIKE TO GO FIRST OR SECOND?")
     print("ENTER 'FIRST' TO GO FIRST AND 'SECOND' TO GO SECOND")
     response = input("> ").lower()
