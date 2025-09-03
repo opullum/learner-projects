@@ -1,0 +1,73 @@
+Selection Comparison (eval_winner(plr_select: int, comp_select: int, result: str))
+    all options are stored in list in form [[], [], []] corresponding to rock (0), 
+    paper (1), scissors (2)
+    [
+        index 0: [2] (rock beats scissors)
+        index 1: [0] (paper beats rock)
+        index 2: [1] (scissors beats paper)
+    ]
+    list what each selection 'wins' against.
+
+    if comp_select == choice_select return -1                # game draw
+    check to see if comp_select == choice_list[plr_select]
+        if true: computer loses, return 1                   # player wins
+        if false: player loses, return 0                    # player loses
+
+Store Results (store_results(plr_select: int, comp_select: int, game_results: list))
+    list of choices = ['rock', 'paper', 'scissors']
+    plr_select and comp_select correspond to above
+
+    format:
+        GAME #[GAME_COUNT] [WIN/LOSS/DRAW]
+        PLAYER: {choices[plr_select]}
+        COMPUTER: {choices[comp_select]}
+
+
+    results in form of list[str] -> ["GAME... COMPUTER...", {match_two}, {match_three}]
+    if len(results) == 5
+        results.pop()
+        results.append(new_result)
+
+game continues in while loop until 'running' false
+    menu prompt (menu())
+        welcome message
+        options:
+            1. start game
+            2. previous matches
+            0. exit program
+        request selection from above options (input validation, exit program if fail)
+
+    game started (game()):
+        display message
+        request player input (0 - 2) to simulate 'Rock', 'Paper', or 'Scissors' (plr_select: int)
+        retrieve comp_select randint(0, 2)
+        result = eval_winner(plr_select, comp_select)
+
+        depending on result:
+            if plr win (1): player win message, result = "WIN"
+            if plr loss (2): player loss message, result = "LOSS"
+            else: draw message, result = "DRAW"
+
+        store_results(plr_select, comp_select, result)
+        ask if player wants to keep playing:
+            yes: clear screen, start another round
+            no: clear screen, return to menu
+
+    previous matches(prev_matches()):
+        loop through match results (implemented as stack)
+        print to screen with spacing
+        message: "PRESS ANY KEY TO RETURN TO MENU"
+        wait for input to return to main menu (input())
+
+
+
+
+
+
+        
+
+
+
+
+
+
