@@ -1,24 +1,32 @@
-import random
+from random import randint
+from os import system
 
-def store_results(plr_select: int, comp_select: int, result: str, results_list: list, matches: int) -> None:
+matches_played = 0
+
+def store_results(plr_select: int, comp_select: int, result: str, game_data: dict) -> None:
 
     match_list = ["ROCK", "PAPER", "SCISSORS"]
     plr_choice = match_list[plr_select]
     comp_choice = match_list[comp_select]
 
     result_str = (
-        f"GAME #{matches + 1} [{result}]\n"
-        + f"PLAYER: {plr_choice}"
-        + f"COMPUTER: {comp_select}"
+        f"GAME #{game_data["matches"] + 1} [{result}]\n"
+        + f"PLAYER: {plr_choice}\n"
+        + f"COMPUTER: {comp_choice}"
     )
 
-    if len(results_list) == 5: results_list.pop()
-    results_list.append(result_str)
+    if len(game_data["results"]) == 5: game_data["results"].pop(0)
+    game_data["results"].append(result_str)
+
 
 def show_results(results_list: list):
+    system('cls||clear')
     print("PRINTING RESULTS OF PREVIOUS 5 MATCHES...")
     for result in results_list:
         print(result + '\n')
+
+    print("\n\nPRESS ENTER KEY TO CONTINUE...")
+    input()
 
 
 def eval_winner(plr_select: int, comp_select: int) -> int:
@@ -33,12 +41,14 @@ def eval_winner(plr_select: int, comp_select: int) -> int:
     if comp_select == game_list[plr_select]: return 1
     else: return 0
 
+
 # Main Menu function to provide player options
 def menu() -> int:
+    system('cls||clear')
 
     selection = -1
 
-    print("YOU ARE NOW PLAYING [ROCK PAPER SCISSORS]")
+    print("[ROCK PAPER SCISSORS]")
     print("SELECT A MENU OPTION FROM THE CHOICES BELOW:")
     print("1. Start Game")
     print("2. List Previous Matches")
@@ -49,8 +59,10 @@ def menu() -> int:
 
     return selection
 
+
 # Game Function. Starts the Rock-Paper-Scissors Game
-def start_game(results_list: list, matches_played: int) -> int:
+def start_game(game_data: dict) -> None:
+    system('cls||clear')
 
     plr_select = -1
     result = ""
@@ -65,25 +77,24 @@ def start_game(results_list: list, matches_played: int) -> int:
     while plr_select > 2 or plr_select < 0:
         plr_select = int(input("> "))
 
-    comp_select = random.randint(0, 2)
+    comp_select = randint(0, 2)
     result = eval_winner(plr_select, comp_select)
 
     match (result):
         case 1:
             print("CONGRATULATIONS! YOU WIN!")
             result = "WIN"
-        case 2:
+        case 0:
             print("OH NO! YOU LOST!")
             result = "LOSS"
         case _:
             print("IT'S A DRAW!")
             result = "DRAW"
 
-    store_results(plr_select, comp_select, result, results_list, matches_played)
+    store_results(plr_select, comp_select, result, game_data)
+    game_data["matches"] += 1
 
     print("DO YOU WISH TO KEEP PLAYING? ('YES' OR 'NO')")
     choice = input("> ").lower()
     
-    game_continue = 1 if choice == 'yes' else 0
-
-    return game_continue
+    if choice == 'yes': start_game(game_data)
