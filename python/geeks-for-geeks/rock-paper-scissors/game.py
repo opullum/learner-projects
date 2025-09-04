@@ -1,6 +1,5 @@
 import random
 
-
 def store_results(plr_select: int, comp_select: int, result: str, results_list: list, matches: int) -> None:
 
     match_list = ["ROCK", "PAPER", "SCISSORS"]
@@ -15,6 +14,11 @@ def store_results(plr_select: int, comp_select: int, result: str, results_list: 
 
     if len(results_list) == 5: results_list.pop()
     results_list.append(result_str)
+
+def show_results(results_list: list):
+    print("PRINTING RESULTS OF PREVIOUS 5 MATCHES...")
+    for result in results_list:
+        print(result + '\n')
 
 
 def eval_winner(plr_select: int, comp_select: int) -> int:
@@ -46,7 +50,7 @@ def menu() -> int:
     return selection
 
 # Game Function. Starts the Rock-Paper-Scissors Game
-def game(results_list: list, matches_played: int) -> int:
+def start_game(results_list: list, matches_played: int) -> int:
 
     plr_select = -1
     result = ""
