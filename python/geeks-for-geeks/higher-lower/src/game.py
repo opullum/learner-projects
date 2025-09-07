@@ -27,6 +27,11 @@ def menu(data_obj: Data, code: int, status: str) -> int:
     system('cls||clear')
 
     print(TITLE_TEXT)
+
+    # Code [1] will occur if the file is improperly formatted,
+    # or if a Person entry does not have the necessary entries 
+    # (name, follower_count, entry)
+
     if code == 1:
         data_obj.load_file()
     else:
@@ -37,6 +42,9 @@ def menu(data_obj: Data, code: int, status: str) -> int:
     print("2. LIST CURRENT STREAK")
     print("3. CHANGE DATA FILE")
     print("0. END PROGRAM")
+
+    # While loop for input verification. Tried searching for a 
+    # better solution, but it doesn't seem to exist in Python.
 
     while True:
         try:
