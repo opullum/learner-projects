@@ -1,7 +1,11 @@
 from random import randint
 from os import system
 
-matches_played = 0
+# Stores the result of the previously played match in a list to be referenced
+# 
+# GAME #[game_number] [WIN/LOSS/DRAW]
+# PLAYER: [ROCK/PAPER/SCISSORS]
+# COMPUTER: [ROCK/PAPER/SCISSORS]
 
 def store_results(plr_select: int, comp_select: int, result: str, game_data: dict) -> None:
 
@@ -18,6 +22,7 @@ def store_results(plr_select: int, comp_select: int, result: str, game_data: dic
     if len(game_data["results"]) == 5: game_data["results"].pop(0)
     game_data["results"].append(result_str)
 
+# Iterates through results list[str] to output match results to the screen
 
 def show_results(results_list: list):
     system('cls||clear')
@@ -28,6 +33,8 @@ def show_results(results_list: list):
     print("\n\nPRESS ENTER KEY TO CONTINUE...")
     input()
 
+# Evaluates the winner of a match by comparing player and computer (int) selections
+# Options comparison list stores the option a choice "wins" against
 
 def eval_winner(plr_select: int, comp_select: int) -> int:
 
@@ -43,6 +50,8 @@ def eval_winner(plr_select: int, comp_select: int) -> int:
 
 
 # Main Menu function to provide player options
+# Returns int (option) corresponding to the selected option to be referenced
+
 def menu() -> int:
     system('cls||clear')
 
@@ -61,6 +70,7 @@ def menu() -> int:
 
 
 # Game Function. Starts the Rock-Paper-Scissors Game
+
 def start_game(game_data: dict) -> None:
     system('cls||clear')
 
