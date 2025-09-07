@@ -15,7 +15,7 @@ class Data:
     # Returns: dict (data file containing Persons for game)
 
     def get_data(self) -> dict:
-        return []
+        return {}
     
     # Menu to select a new file from /resources folder
     # Player will select a given file index which will be placed in 
