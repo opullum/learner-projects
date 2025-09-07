@@ -1,6 +1,7 @@
 from random import randint
 from os import system
 
+
 # Stores the result of the previously played match in a list to be referenced
 # 
 # GAME #[game_number] [WIN/LOSS/DRAW]
@@ -22,6 +23,7 @@ def store_results(plr_select: int, comp_select: int, result: str, game_data: dic
     if len(game_data["results"]) == 5: game_data["results"].pop(0)
     game_data["results"].append(result_str)
 
+
 # Iterates through results list[str] to output match results to the screen
 
 def show_results(results_list: list):
@@ -32,6 +34,7 @@ def show_results(results_list: list):
 
     print("\n\nPRESS ENTER KEY TO CONTINUE...")
     input()
+
 
 # Evaluates the winner of a match by comparing player and computer (int) selections
 # Options comparison list stores the option a choice "wins" against

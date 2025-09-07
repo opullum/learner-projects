@@ -1,11 +1,12 @@
+# Entry point of Rock Paper Scissors game
+
 from game import menu, start_game, show_results
 
-game_data = {
-    "results": [],
-    "matches": 0
-}
-matches_played = 0
+game_data = { "results": [], "matches": 0 }
 running = True
+
+# Primary program loop. Functions are called from game.py
+# menu() -> returns user selection to correspond with options listed
 
 while (running):
     choice = menu()
