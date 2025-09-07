@@ -32,22 +32,24 @@ data.py
                 clear screen
                 print unable to find resources folder
                 wait for user input 
-                exist program
+                exit program
             if resources folder is empty
                 clear screen
                 print message stating the program will exit due to empty resources folder
                 wait for user input
                 exit program
 
-            if default file is not found, attempt to load a data file
+            if default file is not found, attempt to load a data file via. load_file()
 
         game_data() -> list
             returns the person_data to be used during the game
 
         load_file(json) -> list
+            clear screen
             select a datafile to be loaded into the program
             list all files in /resources with index
             retrieve user input
+
             loaded_data = selection
 
 ascii.py
@@ -65,18 +67,33 @@ person.py
 game.py
 
     initialize_person(data: dict) -> Person, boolean:
-        initializes a new Person class using the given data
-        also returns boolean representing successful creation
-        return Person
+
+        if all(key in data for key in ("name","followers", "description")):
+            initializes a new Person class using the given data
+            return Person, success (true)
+        else:
+            print error about incomplete person entry
+            return None, false
+    
+        
+        
 
     verify_guess(guess: int, compared: Person, current: Person) -> boolean
         compares the follower count of compared (person) vs. current (person)
         returns true/false
 
-    retrieve_guess()
-        retrieves a person to be used for guesses from game_data()
-        calls on random index in data_dict -> selection
-        return initialize_person(data_dict[selection]), success (bool)
+    retrieve_guess(guessed_persons: list)
+        retrieves a person to be used for guesses from data.game_data()
+        calls on random index in data.game_data() -> selection
+        while random index in guessed_persons
+            generate new random index -> selection        
+
+        person, success = generate a new Person from given entry
+
+        if success false
+            return None, false
+
+        return initialize_person(game_data[selection]), success (bool)
 
     menu(data_obj: Data, game_data: list, code, status) -> None
 
@@ -96,7 +113,8 @@ game.py
             0. END PROGRAM
 
         retrieve player input
-        switch depending on given input
+        verify valid user input
+        return user input
 
     
     start_game(game_data: list) -> (code: int, status: str)
@@ -110,7 +128,7 @@ game.py
         retrieves two individuals from data.py using retrieve_guess()
             first is stored as current (current person), compared (person compared to current)
 
-        if retrieve_guess failed
+        if retrieve_guess failed (for either)
             return to menu with code 1 and status
 
         retrieve user input ('higher', 'lower') case-ignored
@@ -129,21 +147,24 @@ game.py
 
 main.py
     
-    creates game_data
+    create game data dictionary
     running
 
     create new Data obj
+    variables for program status and code
 
     while running()
         begins the primary game loop
-        menu()
-
-    start_game()
-        Begins the primary loop of the program
         game continues only while the program is running
+        create a new Data object to represent person data
+        selection = menu(code, status)
+        change options depending on selection
 
-            create a new Data object to represent person data
-            menu(data_obj, game_data)
+            1. START GAME -> start_game()
+            2. CURRENT STREAK -> print current_streak from game_data
+            3. CHANGE DATA File -> load_file()
+            0. END PROGRAM -> set running to false
+
 
 
 
