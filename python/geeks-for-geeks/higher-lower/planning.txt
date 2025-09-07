@@ -1,0 +1,121 @@
+
+
+custom person files can be loaded from .json
+
+Example File
+    [
+        {
+            "name": ...,
+            "followers": ...,
+            "description": ...
+        },
+
+        {
+            "name": ...,
+            "followers": ...,
+            "description": ...,
+        }
+    ]
+
+data.py
+    handles game data, json files, player information
+
+    DEFAULT_DATA = path to default .json data file
+
+    class Data:
+        initialize to default data file
+
+        person_data (list)
+
+        game_data() -> list
+            returns the person_data to be used during the game
+
+        load_file(json)
+            loads custom datafile to be used during the game
+
+ascii.py
+    file to store ascii art for use in menus
+
+person.py
+    class Person(person_data)
+        initializes given data (list)
+        name = data[name]
+        followers = data[followers]
+        description = data[description]
+
+        raises error if unable to find above data
+
+game.py
+
+    initialize_person(data: dict) -> Person, boolean:
+        initializes a new Person class using the given data
+        also returns boolean representing successful creation
+        return Person
+
+    verify_guess(guess: int, compared: Person, current: Person) -> boolean
+        compares the follower count of compared (person) vs. current (person)
+        returns true/false
+
+    retrieve_guess()
+        retrieves a person to be used for guesses from game_data()
+        calls on random index in data_dict -> selection
+        return initialize_person(data_dict[selection]), success (bool)
+
+    menu(data_obj: Data, game_data: list, code, status) -> None
+
+        clear screen
+
+        display game title ascii art
+
+        if code == 1
+            select_file(data_obj)
+        if code == 0
+            if status, display status
+
+        display player options
+            1. START GAME
+            2. CURRENT STREAK 
+            3. CHANGE DATA File
+            0. END PROGRAM
+
+        retrieve player input
+        switch depending on given input
+
+    
+    start_game(game_data: list) -> (code: int, status: str)
+
+        clear screen
+
+        all results stored in game_data 
+        begins another round of higher-lower
+
+        print message
+        retrieves two individuals from data.py using retrieve_guess()
+            first is stored as current (current person), compared (person compared to current)
+
+        if retrieve_guess failed
+            return to menu with code 1 and status
+
+        retrieve user input ('higher', 'lower') case-ignored
+        'higher' and 'lower' converted to 0/1 respectively, pass to verify_guess()
+
+        verify_guess() takes in current and compared to verify guess -> returns true/false
+
+        if true:
+            print message
+            increment correct guesses
+        if false:
+            print message
+            end game, return to menu 
+
+main.py
+    
+    start_game()
+        Begins the primary loop of the program
+        game continues only while the program is running
+
+            create a new Data object to represent person data
+            menu(data)
+
+
+
