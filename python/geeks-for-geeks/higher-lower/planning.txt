@@ -18,20 +18,37 @@ Example File
     ]
 
 data.py
-    handles game data, json files, player information
+    handles data files (json files)
 
     DEFAULT_DATA = path to default .json data file
 
     class Data:
-        initialize to default data file
 
-        person_data (list)
+        loaded_data (list)
+
+        initialize to default data file
+            
+            if resources folder does not exist
+                clear screen
+                print unable to find resources folder
+                wait for user input 
+                exist program
+            if resources folder is empty
+                clear screen
+                print message stating the program will exit due to empty resources folder
+                wait for user input
+                exit program
+
+            if default file is not found, attempt to load a data file
 
         game_data() -> list
             returns the person_data to be used during the game
 
-        load_file(json)
-            loads custom datafile to be used during the game
+        load_file(json) -> list
+            select a datafile to be loaded into the program
+            list all files in /resources with index
+            retrieve user input
+            loaded_data = selection
 
 ascii.py
     file to store ascii art for use in menus
@@ -103,19 +120,30 @@ game.py
 
         if true:
             print message
-            increment correct guesses
+            increment correct guesses (game_data["guesses"] += 1)
+            increment streak (game_data["streak"] += 1)
         if false:
             print message
+            reset streak (game_data["streak" = 0])
             end game, return to menu 
 
 main.py
     
+    creates game_data
+    running
+
+    create new Data obj
+
+    while running()
+        begins the primary game loop
+        menu()
+
     start_game()
         Begins the primary loop of the program
         game continues only while the program is running
 
             create a new Data object to represent person data
-            menu(data)
+            menu(data_obj, game_data)
 
 
 
